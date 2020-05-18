@@ -19,8 +19,9 @@ class MaxNumber {
         int[] numbers5 = {2,20, 200};
         int[] numbers6 = {3, 30, 34};
         int[] numbers7 = {0, 0, 0, 0};
+        int[] numbers8 = {0, 0, 7, 0, 0};
 
-        System.out.println(solution(numbers7));
+        System.out.println(solution(numbers8));
     }
 
     public static String solution(int[] numbers) {
