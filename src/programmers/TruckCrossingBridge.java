@@ -40,6 +40,8 @@ public class TruckCrossingBridge {
         }
 
         boolean push(int element) {
+            // 원소 추가에 성공하면 true, 실패하면 false return
+
             this.time++;
 
             // 사이즈 체크
