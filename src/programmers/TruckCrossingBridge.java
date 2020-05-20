@@ -40,32 +40,23 @@ public class TruckCrossingBridge {
         }
 
         boolean push(int element) {
-            // 큐가 비어있을 때
             this.time++;
+
             // 사이즈 체크
-            if(elements.size() < this.size)  {
-                // 무게 체크
-                if((element + totalWeight) <= this.maxWeight) {
-                    this.elements.add(element);
-                    this.totalWeight += element;
-                } else {
-                    this.elements.add(0);
-                    return false;
-                }
-            } else {
+            if(elements.size() == this.size)  {
                 // element 사이즈가 maxSize에 도달한 경우
                 int weight = this.elements.remove();
                 this.totalWeight -= weight;
-                if((element + totalWeight) <= this.maxWeight) {
-                    this.elements.add(element);
-                    this.totalWeight += element;
-                    return true;
-                } else {
-                    this.elements.add(0);
-                    return false;
-                }
             }
-            return true;
+
+            if((element + totalWeight) <= this.maxWeight) {
+                this.elements.add(element);
+                this.totalWeight += element;
+                return true;
+            } else {
+                this.elements.add(0);
+                return false;
+            }
         }
     }
 
