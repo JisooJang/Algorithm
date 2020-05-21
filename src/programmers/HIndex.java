@@ -22,7 +22,7 @@ public class HIndex {
     public static int solution(int[] citations) {
         int answer = 0;
         Arrays.sort(citations);
-        for(int i=citations.length ; i>= 0; i--) {
+        for(int i=citations.length ; i>= 0; i--) { // 최댓값을 구해야하므로, HIndex의 범위 중에서 큰값부터 시작하여 반복한다.
             int 이상횟수 = 0;
             int 미만횟수 = 0;
             for(int j=0 ; j<citations.length ; j++) {
