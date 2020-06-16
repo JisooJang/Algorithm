@@ -27,12 +27,6 @@ public class Hash42576 {
             tmp.put(s, tmp.get(s) + 1);
         }
 
-        for (Map.Entry<String, Integer> entry : tmp.entrySet()) {
-            if(entry.getValue() % 2 != 0) {
-                return entry.getKey();
-            }
-        }
-
         return tmp.entrySet()
                 .stream()
                 .filter((entry) -> entry.getValue() % 2 != 0)
