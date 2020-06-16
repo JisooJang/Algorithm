@@ -13,7 +13,10 @@ public class Hash42576 {
     [mislav, stanko, mislav, ana]	[stanko, ana, mislav]	mislav
     [mislav, stanko, mislav, ana, mislav]	[stanko, ana, mislav, mislav, mislav, jisu]	jisu
      */
-    public String solution(String[] participant, String[] completion) {
+    public static void main(String[] args) {
+        System.out.println(solution(new String[]{"marina", "josipa", "nikola", "vinko", "filipa"}, new String[]{"josipa", "filipa", "marina", "nikola"}));
+    }
+    public static String solution(String[] participant, String[] completion) {
         Map<String, Integer> tmp = new HashMap<>();
 
         for (String s : participant) {
@@ -30,6 +33,11 @@ public class Hash42576 {
             }
         }
 
-        return null;
+        return tmp.entrySet()
+                .stream()
+                .filter((entry) -> entry.getValue() % 2 != 0)
+                .findFirst()
+                .map(Map.Entry::getKey)
+                .orElse(null);
     }
 }
