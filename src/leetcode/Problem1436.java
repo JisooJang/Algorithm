@@ -68,4 +68,32 @@ public class Problem1436 {
 
         return null;
     }
+
+    public static String destCity3(List<List<String>> path) {
+        Map<String, Integer> indexOfCandidates = new HashMap<>();
+
+        // O(N)
+        for (List<String> strings : path) {
+            String element1 = strings.get(0);
+            String element2 = strings.get(1);
+            if(!indexOfCandidates.containsKey(element1)) {
+                indexOfCandidates.put(element1, 0); // start, dest 원소는 중복값이 없으므로 put이 한번만 실행. 여기서는 0 인덱스의 원소를 put 하므로 start값이 추가됨.
+            } else {
+                indexOfCandidates.remove(element1);
+            }
+            if(!indexOfCandidates.containsKey((element2))) {
+                indexOfCandidates.put(element2, 1); // start, dest 원소는 중복값이 없으므로 put이 한번만 실행. 여기서는 1 인덱스의 원소를 put 하므로 dest값이 추가됨.
+            } else {
+                indexOfCandidates.remove(element2);
+            }
+        }
+
+        // 2번 반복 => O(2) -> 상수시간
+        for(Map.Entry<String, Integer> entry :  indexOfCandidates.entrySet()) {
+            if(entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
 }
