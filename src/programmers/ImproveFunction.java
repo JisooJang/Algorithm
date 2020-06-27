@@ -62,6 +62,7 @@ public class ImproveFunction {
         int[] dayArray = new int[length];
 
         // O(N)
+        // dayArray 배열에 각 progresses 별 남은 작업량을 저장한다.
         for(int i=0 ; i<length ; i++) {
             int rest = (100 - progresses[i]);
             dayArray[i] = rest / speeds[i];
@@ -72,6 +73,8 @@ public class ImproveFunction {
         List<Integer> result = new ArrayList<>();
         int max = dayArray[0];
         int count = 1;
+
+        // 초기 max값을 설정하고, 다음 원소가 max값보다 크면 기존 count값을 추가한다. 단 for문이 끝나면 마지막 count값을 추가한다.
         for(int i=1 ; i<length ; i++) {
             if(dayArray[i] > max) {
                 result.add(count);
@@ -86,7 +89,7 @@ public class ImproveFunction {
 
         // stream 이용하면 기존 1.70ms - 7ms로 느려짐.
         // O(N)
-        // 최종 : O(3N) -> O(N)
+        // 최종 O(3N) -> O(N)
         return result.stream().mapToInt(i->i).toArray();
     }
 }
