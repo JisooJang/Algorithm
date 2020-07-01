@@ -1,7 +1,5 @@
 package leetcode;
 
-import com.sun.org.apache.xml.internal.utils.StringToStringTable;
-
 import java.util.Arrays;
 
 /*
