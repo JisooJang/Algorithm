@@ -1,13 +1,21 @@
 package common;
 
+import java.io.*;
+
 public class RecursionTest {
-    public static void main(String[] args) {
-        printInBinary(24);
-        System.out.println(sum(8, new int[]{1, 2, 3, 4, 5, 6, 7, 8}));
-        System.out.println(findMax(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 0, 7));
-        System.out.println(findMax2(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 0, 7));
-        System.out.println(binarySearch(new String[]{"aaa", "bbb", "ccc", "ddd", "eee"}, "ffff", 0, 4));
-        System.out.println(binarySearch(new String[]{"aaa", "bbb", "ccc", "ddd", "eee"}, "11", 0, 4));
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    public static void main(String[] args) throws IOException {
+//        printInBinary(24);
+//        System.out.println(sum(8, new int[]{1, 2, 3, 4, 5, 6, 7, 8}));
+//        System.out.println(findMax(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 0, 7));
+//        System.out.println(findMax2(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 0, 7));
+//        System.out.println(binarySearch(new String[]{"aaa", "bbb", "ccc", "ddd", "eee"}, "ffff", 0, 4));
+//        System.out.println(binarySearch(new String[]{"aaa", "bbb", "ccc", "ddd", "eee"}, "11", 0, 4));
+        //hanoi2(3, 1, 2, 3);
+        //System.out.println(fibo(20));
+        //System.out.println(factorial(12));
+        System.out.println(최대공약수(22, 8));
     }
     public static void printInBinary(int n) {
         if(n < 2) {
@@ -65,5 +73,46 @@ public class RecursionTest {
         } else {
             return binarySearch(arr, target, mid + 1, endIndex);
         }
+    }
+
+    // 현재 위치에서 출구까지 가는 경로가 있다면
+    // 1) 현재 위치가 출구일 때 (반복 종료 조건)
+    // 2) 혹은 이웃한 셀들 중 하나에서 현재 위치를 지나지 않고 출구까지 가는 경로가 있을 때
+    public static int 미로찾기() {
+        return 0;
+    }
+
+    public static int fibo(int n) {
+        if(n <= 2)  return 1;
+        return fibo(n-1) + fibo(n-2);
+    }
+
+    public static long factorial(int n) {
+        if(n == 0) return 0;
+        if(n == 1) return 1;
+        return n * factorial(n - 1);
+    }
+
+    // 원반갯수, 출발, 목적, 나머지
+//    public static void hanoi(int num, int from, int to, int other) {
+//        if(num == 0) return;
+//        hanoi(num - 1, from, other, to);
+//        System.out.println("num : " + num + " - " + from + "에서 " +  to + "로 옮긴다.");
+//        hanoi(num - 1, other, to, from);
+//    }
+
+    // 원반 갯수, 첫번째 출발 기둥, 두번째 기둥(나머지 기둥), 세번째 목적지 기둥
+    public static void hanoi2(int num, int first, int rest, int end) throws IOException {
+        if(num == 0) {
+            return;
+        }
+        hanoi2(num - 1, first, end, rest);
+        bw.write(first + " " + end);
+        hanoi2(num - 1, rest, first, end);
+    }
+
+    public static int 최대공약수(int x, int y) {
+        if(y == 0) return x;
+        return 최대공약수(y, x % y);
     }
 }
