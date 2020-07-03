@@ -16,6 +16,7 @@ public class RecursionTest {
         //System.out.println(fibo(20));
         //System.out.println(factorial(12));
         System.out.println(최대공약수(22, 8));
+        System.out.println(gcd_array(new int[]{3, 6, 12, 27}));
     }
     public static void printInBinary(int n) {
         if(n < 2) {
@@ -114,5 +115,13 @@ public class RecursionTest {
     public static int 최대공약수(int x, int y) {
         if(y == 0) return x;
         return 최대공약수(y, x % y);
+    }
+
+    public static int gcd_array(int[] a) {
+        int result = -1;
+        for(int i=0 ; i<a.length - 1 ; i++) {
+            result = 최대공약수(a[i], a[i+1]);
+        }
+        return result;
     }
 }
