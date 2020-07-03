@@ -1,9 +1,9 @@
 package programmers;
 
 import java.util.AbstractMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /*
 https://programmers.co.kr/learn/courses/30/lessons/42587
@@ -20,7 +20,7 @@ public class Printer {
     // location의 인덱스는 0부터 시작작
    public static int solution(int[] priorities, int location) {
         int count = 0;
-        Queue<Map.Entry<Integer, Integer>> q = new LinkedList<>();
+        Queue<Map.Entry<Integer, Integer>> q = new LinkedBlockingQueue<>();
 
         int i = 0;
         for(int priority : priorities) {
