@@ -9,6 +9,8 @@ public class Tape {
     public static void main(String[] args) {
         System.out.println(solution(new int[]{3,1,2,4,3}));
         System.out.println(solution(new int[]{3,1}));
+        System.out.println(solution(new int[]{1,1,1,1,1,1,1,1,1,1}));
+        System.out.println(solution(new int[]{1,1,1,1,1,1,1,1,1,1,1}));
     }
 
     public static int solution(int[] A) {
@@ -27,7 +29,7 @@ public class Tape {
         Set<Integer> diffs = new HashSet<>();
         for (int i=0 ; i<A.length-1 ; i++) {
             leftSum += A[i];
-            System.out.println(Math.abs(leftSum - (sum - leftSum)));
+            //System.out.println(Math.abs(leftSum - (sum - leftSum)));
             diffs.add(Math.abs(leftSum - (sum - leftSum)));
         }
 
