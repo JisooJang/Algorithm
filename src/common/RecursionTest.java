@@ -1,6 +1,7 @@
 package common;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class RecursionTest {
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -15,8 +16,11 @@ public class RecursionTest {
         //hanoi2(3, 1, 2, 3);
         //System.out.println(fibo(20));
         //System.out.println(factorial(12));
-        System.out.println(최대공약수(22, 8));
-        System.out.println(gcd_array(new int[]{3, 6, 12, 27}));
+        //System.out.println(최대공약수(22, 8));
+        //System.out.println(gcd_array(new int[]{3, 6, 12, 27}));
+        //test();
+        System.out.println(최대공약수2(22, 8)); // 2
+        System.out.println(최대공약수2(18, 12)); // 6
     }
     public static void printInBinary(int n) {
         if(n < 2) {
@@ -118,10 +122,37 @@ public class RecursionTest {
     }
 
     public static int gcd_array(int[] a) {
+
         int result = -1;
         for(int i=0 ; i<a.length - 1 ; i++) {
             result = 최대공약수(a[i], a[i+1]);
         }
         return result;
+    }
+
+    public static void test() {
+        int abs = 2;
+        int[] H = {5,3,5,1,2,4};
+        int[] left = new int[abs + 1];
+        int[] right = new int[H.length - left.length];
+        System.arraycopy(H, 0, left, 0, left.length);
+        System.arraycopy(H, abs+1, right, 0, right.length);
+        System.out.println(Arrays.toString(left));
+        System.out.println(Arrays.toString(right));
+
+        int leftResult = Arrays.stream(left).max().getAsInt() * left.length;
+        int rightResult = Arrays.stream(right).max().getAsInt() * right.length;
+    }
+
+    // 유클리드 호제법을 이용한 최대공약수 구하기
+    public static int 최대공약수2(int x, int y) {
+        int a;
+        if(x > y) {
+            a = x % y;
+        } else {
+            a = y % x;
+        }
+        if(a == 0) return y;
+        else return 최대공약수(Math.min(x, y), a);
     }
 }
