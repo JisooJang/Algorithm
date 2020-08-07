@@ -3,6 +3,10 @@ package leetcode;
 import java.util.Stack;
 
 // https://leetcode.com/problems/valid-parentheses/
+/*
+Runtime: 1 ms, faster than 99.16% of Java online submissions for Valid Parentheses.
+Memory Usage: 37.6 MB, less than 20.28% of Java online submissions for Valid Parentheses.
+ */
 public class Problem20 {
     public static void main(String[] args) {
         System.out.println(isValid("()"));
