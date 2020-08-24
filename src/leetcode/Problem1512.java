@@ -19,6 +19,11 @@ public class Problem1512 {
         return count;
     }
 
+    /*
+    1. (0,1) (1,2) (2,3) (3,1) (4,1) (5,3)  -> key : index, value : value
+       => sort by value
+       (0,1)(3,1)(4,1)  / (1,2) / (2,3)(5,3)
+     */
     public static int numIdenticalPairs2(int[] nums) {
         int result = 0;
         // 1. index - value 구조로 map에 넣는다.
@@ -53,6 +58,23 @@ public class Problem1512 {
         return result;
     }
 
+    /*
+    2짝의 경우의 수 찾기
+    (2,5) -> 경우의 수? (2개면 1개)
+    2,5
+    (0,3,4) -> 경우의 수? (3개면 3개) 2개일 때 값에서 +2
+    0,3 / 0,4 / 3,4
+    (1,2,3,4) -> 경우의 수? (4개면 6개) 3개일 때 값에서 + 3
+    1,2 / 1,3 / 1,4 / 2,3 / 2,4 / 3,4
+
+    (1,2,3,4,5) -> 경우의 수? (5개면 10개) 4개일 때 값에서 + 4
+    1,2 / 1,3 / 1,4 / 1,5
+    2,3 / 2,4 / 2,5
+    3,4 / 3,5
+    4,5
+    4 + 3 + 2 + 1 = 10
+    (n-1) + (n-2) + ... 1
+     */
     public static int findCount(int num) {
         if(num <= 1) {
             return 0;
