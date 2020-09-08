@@ -50,21 +50,23 @@ public class Problem64065 {
         String[] elements = s.split(",");
 
         // O(N)
-        for(int i=0 ; i<elements.length ; i++) {
-            int num = Integer.parseInt(elements[i]);
-            checkCount.put(num, checkCount.getOrDefault(num, 0) + 1);
-        }
-        int[] answer = new int[checkCount.size()];
+//        for(int i=0 ; i<elements.length ; i++) {
+//            int num = Integer.parseInt(elements[i]);
+//            checkCount.put(num, checkCount.getOrDefault(num, 0) + 1);
+//        }
+
+        // stream으로 변경
+        Arrays.stream(elements).map(Integer::parseInt).forEach((num) -> checkCount.put(num, checkCount.getOrDefault(num, 0) + 1));
 
         List<Map.Entry<Integer, Integer>> mapToList = new LinkedList<>(checkCount.entrySet());
         mapToList.sort(Map.Entry.comparingByValue((v1, v2) -> v2 - v1));
 
-        int i = 0;
-
         // O(N)
-        for(Map.Entry<Integer, Integer> entry : mapToList) {
-            answer[i++] = entry.getKey();
-        }
-        return answer;
+//        for(Map.Entry<Integer, Integer> entry : mapToList) {
+//            answer[i++] = entry.getKey();
+//        }
+
+        // stream으로 변경
+        return mapToList.stream().mapToInt(Map.Entry::getKey).toArray();
     }
 }
