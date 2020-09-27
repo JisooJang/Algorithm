@@ -10,6 +10,7 @@ public class Problem4949 {
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()) {
             String sentence = sc.nextLine();
+            if(sentence.equals(".")) break;
             System.out.println(isBalanced(sentence) ? "YES" : "NO");
         }
 
